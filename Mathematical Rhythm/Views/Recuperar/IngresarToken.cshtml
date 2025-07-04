@@ -1,0 +1,138 @@
+﻿@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewBag.Title = "Verificación de Token | Mathematical Rhythm";
+}
+
+<style>
+    .token-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .token-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.5s ease-out;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .token-title {
+        color: #6d28d9;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .form-label {
+        display: block;
+        color: #4b5563;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+        transition: border-color 0.2s;
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+        text-align: center;
+    }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+    .form-hint {
+        color: #6b7280;
+        font-size: 0.875rem;
+        margin-bottom: 1.25rem;
+        display: block;
+        text-align: center;
+    }
+
+    .btn-verify {
+        background: #6d28d9;
+        color: white;
+        width: 100%;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+        .btn-verify:hover {
+            background: #7c3aed;
+        }
+
+    .alert-error {
+        padding: 0.75rem;
+        border-radius: 8px;
+        margin-bottom: 1.25rem;
+        text-align: center;
+        background: #fee2e2;
+        color: #b91c1c;
+        border: 1px solid #fecaca;
+    }
+
+    .link-back {
+        display: block;
+        text-align: center;
+        margin-top: 1.5rem;
+        color: #6d28d9;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        .link-back:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="token-container">
+    <div class="token-card">
+        <h1 class="token-title">VERIFICACIÓN DE CÓDIGO</h1>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert-error">@ViewBag.Error</div>
+        }
+
+        <form asp-action="IngresarToken" method="post">
+            <input type="hidden" name="email" value="@ViewBag.Email" />
+
+            <div class="form-group">
+                <label for="token" class="form-label">Código de verificación</label>
+                <input type="text" id="token" name="token" class="form-input"
+                       placeholder="000000" required maxlength="6" pattern="\d{6}" />
+                <span class="form-hint">Ingresa el código de 6 dígitos que recibiste en tu correo</span>
+            </div>
+
+            <button type="submit" class="btn-verify">VERIFICAR</button>
+
+            <a href="/Recuperar/Recuperar" class="link-back">← Volver a recuperación</a>
+        </form>
+    </div>
+</div>

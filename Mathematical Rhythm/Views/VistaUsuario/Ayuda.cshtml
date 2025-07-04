@@ -1,0 +1,217 @@
+﻿@{
+    ViewData["Title"] = "Ayuda | Mathematical Rhythm";
+}
+
+<div class="max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+    <!-- Encabezado -->
+    <div class="text-center mb-12">
+        <h1 class="text-3xl font-bold text-purple-400 mb-4">Centro de Ayuda</h1>
+        <p class="text-gray-300 max-w-3xl mx-auto">
+            Encuentra respuestas a las preguntas más frecuentes o contacta a nuestro equipo de soporte.
+        </p>
+
+        <!-- Barra de búsqueda -->
+        <div class="mt-8 max-w-2xl mx-auto">
+            <div class="relative">
+                <input type="text" placeholder="Buscar en la ayuda..."
+                       class="w-full px-5 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent placeholder-gray-400 text-white">
+                <button class="absolute right-3 top-3 text-gray-400 hover:text-purple-400">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="grid md:grid-cols-3 gap-8">
+        <!-- Sección de categorías -->
+        <div class="md:col-span-1">
+            <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 sticky top-6">
+                <h2 class="text-xl font-semibold text-purple-300 mb-6">Categorías</h2>
+                <ul class="space-y-3">
+                    <li>
+                        <a href="#cuenta" class="flex items-center text-gray-300 hover:text-purple-400 group">
+                            <i class="fas fa-user-circle mr-3 text-purple-500 group-hover:text-purple-400"></i>
+                            <span>Cuenta y perfil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#suscripcion" class="flex items-center text-gray-300 hover:text-purple-400 group">
+                            <i class="fas fa-crown mr-3 text-purple-500 group-hover:text-purple-400"></i>
+                            <span>Suscripciones</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#reproduccion" class="flex items-center text-gray-300 hover:text-purple-400 group">
+                            <i class="fas fa-music mr-3 text-purple-500 group-hover:text-purple-400"></i>
+                            <span>Reproducción</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#problemas" class="flex items-center text-gray-300 hover:text-purple-400 group">
+                            <i class="fas fa-exclamation-triangle mr-3 text-purple-500 group-hover:text-purple-400"></i>
+                            <span>Problemas técnicos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#pagos" class="flex items-center text-gray-300 hover:text-purple-400 group">
+                            <i class="fas fa-credit-card mr-3 text-purple-500 group-hover:text-purple-400"></i>
+                            <span>Pagos y facturación</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="mt-8 pt-6 border-t border-gray-700">
+                    <h3 class="text-lg font-medium text-purple-300 mb-4">¿No encuentras lo que buscas?</h3>
+                    <a href="/VistaUsuario/Contacto" class="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm transition-colors duration-200">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Contactar a soporte
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de preguntas frecuentes -->
+        <div class="md:col-span-2">
+            <!-- Sección Cuenta -->
+            <div id="cuenta" class="mb-12">
+                <h2 class="text-2xl font-bold text-purple-400 mb-6 flex items-center">
+                    <i class="fas fa-user-circle mr-3"></i>
+                    Cuenta y perfil
+                </h2>
+
+                <div class="space-y-4">
+                    <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 hover:bg-gray-800 transition-colors duration-200">
+                        <h3 class="text-lg font-medium text-white mb-2">¿Cómo cambio mi contraseña?</h3>
+                        <p class="text-gray-300 text-sm">
+                            Para cambiar tu contraseña, ve a Configuración de cuenta > Seguridad. Ingresa tu contraseña actual y luego la nueva contraseña dos veces para confirmar.
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 hover:bg-gray-800 transition-colors duration-200">
+                        <h3 class="text-lg font-medium text-white mb-2">¿Cómo actualizo mi información de perfil?</h3>
+                        <p class="text-gray-300 text-sm">
+                            Puedes editar tu foto de perfil, nombre y otra información personal en la sección "Mi perfil" de tu cuenta.
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 hover:bg-gray-800 transition-colors duration-200">
+                        <h3 class="text-lg font-medium text-white mb-2">¿Cómo elimino mi cuenta?</h3>
+                        <p class="text-gray-300 text-sm">
+                            Ve a Configuración de cuenta > Avanzado y selecciona "Eliminar cuenta". Ten en cuenta que esta acción es irreversible.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección Suscripción -->
+            <div id="suscripcion" class="mb-12">
+                <h2 class="text-2xl font-bold text-purple-400 mb-6 flex items-center">
+                    <i class="fas fa-crown mr-3"></i>
+                    Suscripciones
+                </h2>
+
+                <div class="space-y-4">
+                    <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 hover:bg-gray-800 transition-colors duration-200">
+                        <h3 class="text-lg font-medium text-white mb-2">¿Qué beneficios tiene la suscripción premium?</h3>
+                        <p class="text-gray-300 text-sm">
+                            Con premium disfrutas de audio de mayor calidad, sin anuncios, descargas offline y acceso exclusivo a nuevos lanzamientos.
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 hover:bg-gray-800 transition-colors duration-200">
+                        <h3 class="text-lg font-medium text-white mb-2">¿Cómo cancelo mi suscripción?</h3>
+                        <p class="text-gray-300 text-sm">
+                            Puedes cancelar en cualquier momento desde Configuración > Suscripción. Tu acceso continuará hasta el final del período pagado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección Reproducción -->
+            <div id="reproduccion" class="mb-12">
+                <h2 class="text-2xl font-bold text-purple-400 mb-6 flex items-center">
+                    <i class="fas fa-music mr-3"></i>
+                    Reproducción
+                </h2>
+
+                <div class="space-y-4">
+                    <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 hover:bg-gray-800 transition-colors duration-200">
+                        <h3 class="text-lg font-medium text-white mb-2">¿Cómo creo una lista de reproducción?</h3>
+                        <p class="text-gray-300 text-sm">
+                            Ve a "Mi biblioteca" > "Listas" y haz clic en "Crear lista". Dale un nombre y comienza a agregar canciones.
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 hover:bg-gray-800 transition-colors duration-200">
+                        <h3 class="text-lg font-medium text-white mb-2">¿Cómo activo el modo aleatorio?</h3>
+                        <p class="text-gray-300 text-sm">
+                            En la pantalla de reproducción, toca el ícono de aleatorio (dos flechas cruzadas) para activar o desactivar esta función.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección Problemas Técnicos -->
+            <div id="problemas" class="mb-12">
+                <h2 class="text-2xl font-bold text-purple-400 mb-6 flex items-center">
+                    <i class="fas fa-exclamation-triangle mr-3"></i>
+                    Problemas técnicos
+                </h2>
+
+                <div class="space-y-4">
+                    <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 hover:bg-gray-800 transition-colors duration-200">
+                        <h3 class="text-lg font-medium text-white mb-2">La aplicación se cierra inesperadamente</h3>
+                        <p class="text-gray-300 text-sm">
+                            Intenta cerrar sesión y volver a iniciar, o reinstalar la aplicación. Si el problema persiste, contáctanos.
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 hover:bg-gray-800 transition-colors duration-200">
+                        <h3 class="text-lg font-medium text-white mb-2">No puedo reproducir canciones</h3>
+                        <p class="text-gray-300 text-sm">
+                            Verifica tu conexión a internet y que tengas la suscripción activa. También puedes intentar limpiar la caché de la aplicación.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección Pagos -->
+            <div id="pagos">
+                <h2 class="text-2xl font-bold text-purple-400 mb-6 flex items-center">
+                    <i class="fas fa-credit-card mr-3"></i>
+                    Pagos y facturación
+                </h2>
+
+                <div class="space-y-4">
+                    <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 hover:bg-gray-800 transition-colors duration-200">
+                        <h3 class="text-lg font-medium text-white mb-2">¿Qué métodos de pago aceptan?</h3>
+                        <p class="text-gray-300 text-sm">
+                            Aceptamos tarjetas de crédito/débito (Visa, MasterCard, Amex) y PayPal.
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 hover:bg-gray-800 transition-colors duration-200">
+                        <h3 class="text-lg font-medium text-white mb-2">¿Cómo cambio mi método de pago?</h3>
+                        <p class="text-gray-300 text-sm">
+                            Ve a Configuración > Suscripción > Método de pago y selecciona "Actualizar".
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script para smooth scrolling -->
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>

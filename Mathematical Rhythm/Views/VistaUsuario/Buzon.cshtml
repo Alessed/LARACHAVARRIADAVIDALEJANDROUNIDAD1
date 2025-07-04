@@ -1,0 +1,132 @@
+﻿@{
+    ViewData["Title"] = "Buzón | Mathematical Rhythm";
+}
+
+<div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+    <!-- Encabezado -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+        <div>
+            <h1 class="text-3xl font-bold text-purple-400 mb-2">Buzón</h1>
+            <p class="text-gray-300">Tus notificaciones y mensajes recientes</p>
+        </div>
+        <div class="mt-4 md:mt-0">
+            <button class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm flex items-center">
+                <i class="fas fa-envelope mr-2"></i>
+                Nuevo mensaje
+            </button>
+        </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="flex flex-wrap gap-3 mb-6">
+        <button class="px-4 py-2 bg-purple-600 text-white rounded-lg text-sm">Todos</button>
+        <button class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-300 rounded-lg text-sm">No leídos</button>
+        <button class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-300 rounded-lg text-sm">Sistema</button>
+        <button class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-300 rounded-lg text-sm">Amigos</button>
+        <button class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-300 rounded-lg text-sm">Notificaciones</button>
+    </div>
+
+    <!-- Lista de mensajes -->
+    <div class="bg-gray-800 bg-opacity-50 rounded-xl shadow-lg overflow-hidden">
+        <!-- Mensaje 1 - No leído -->
+        <div class="border-b border-gray-700 hover:bg-gray-800 transition-colors duration-200">
+            <div class="flex items-start p-4">
+                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-purple-900 flex items-center justify-center text-purple-400 mr-4">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-center">
+                        <p class="text-sm font-medium text-white truncate">Nuevo lanzamiento</p>
+                        <span class="text-xs text-purple-400">Hoy, 14:30</span>
+                    </div>
+                    <p class="text-sm text-purple-300 mb-1">Artista seguido</p>
+                    <p class="text-sm text-gray-300">"Deep Sequence" ha lanzado un nuevo álbum: "Quantum Patterns"</p>
+                </div>
+                <div class="ml-4 flex-shrink-0">
+                    <span class="h-2 w-2 rounded-full bg-purple-500 block"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensaje 2 -->
+        <div class="border-b border-gray-700 hover:bg-gray-800 transition-colors duration-200">
+            <div class="flex items-start p-4">
+                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-900 flex items-center justify-center text-blue-400 mr-4">
+                    <i class="fas fa-user-friends"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-center">
+                        <p class="text-sm font-medium text-white truncate">Nueva conexión</p>
+                        <span class="text-xs text-gray-500">Ayer, 21:15</span>
+                    </div>
+                    <p class="text-sm text-blue-300 mb-1">DJ_Pulse te sigue</p>
+                    <p class="text-sm text-gray-300">Ahora puedes ver su actividad y compartir música</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensaje 3 -->
+        <div class="border-b border-gray-700 hover:bg-gray-800 transition-colors duration-200">
+            <div class="flex items-start p-4">
+                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-900 flex items-center justify-center text-green-400 mr-4">
+                    <i class="fas fa-music"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-center">
+                        <p class="text-sm font-medium text-white truncate">Lista actualizada</p>
+                        <span class="text-xs text-gray-500">Mar, 10:42</span>
+                    </div>
+                    <p class="text-sm text-green-300 mb-1">Mathematical Beats</p>
+                    <p class="text-sm text-gray-300">Se han agregado 5 nuevas canciones a tu lista seguida</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensaje 4 -->
+        <div class="border-b border-gray-700 hover:bg-gray-800 transition-colors duration-200">
+            <div class="flex items-start p-4">
+                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-yellow-900 flex items-center justify-center text-yellow-400 mr-4">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-center">
+                        <p class="text-sm font-medium text-white truncate">Ventaja premium</p>
+                        <span class="text-xs text-gray-500">Lun, 08:30</span>
+                    </div>
+                    <p class="text-sm text-yellow-300 mb-1">Exclusivo para suscriptores</p>
+                    <p class="text-sm text-gray-300">Descarga el nuevo EP de "Neon Circuits" antes que nadie</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensaje 5 -->
+        <div class="hover:bg-gray-800 transition-colors duration-200">
+            <div class="flex items-start p-4">
+                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-pink-900 flex items-center justify-center text-pink-400 mr-4">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-center">
+                        <p class="text-sm font-medium text-white truncate">Evento cercano</p>
+                        <span class="text-xs text-gray-500">Dom, 16:20</span>
+                    </div>
+                    <p class="text-sm text-pink-300 mb-1">Electronic Fest 2024</p>
+                    <p class="text-sm text-gray-300">Tus artistas favoritos tocarán en 2 semanas. ¡Consigue tus entradas!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paginación -->
+    <div class="mt-6 flex justify-between items-center">
+        <button class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-300 rounded-lg text-sm flex items-center">
+            <i class="fas fa-chevron-left mr-2"></i>
+            Anterior
+        </button>
+        <div class="text-sm text-gray-400">Página 1 de 5</div>
+        <button class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-300 rounded-lg text-sm flex items-center">
+            Siguiente
+            <i class="fas fa-chevron-right ml-2"></i>
+        </button>
+    </div>
+</div>

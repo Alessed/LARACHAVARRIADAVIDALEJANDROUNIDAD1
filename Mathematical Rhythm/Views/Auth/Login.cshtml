@@ -1,0 +1,215 @@
+﻿@model MathematicalRhythm.Models.ViewModels.LoginViewModel
+@using Microsoft.Extensions.Options
+@inject IOptions<MathematicalRhythm.Models.GoogleRecaptchaConfig> RecaptchaConfig
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewData["Title"] = "Iniciar Sesión | Mathematical Rhythm";
+}
+
+<style>
+    body {
+        background-image: url('/images/pexels-yasin.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        margin: 0;
+        min-height: 100vh;
+    }
+
+    .music-login-bg {
+        background-color: rgba(15, 12, 41, 0.7);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(3px);
+    }
+
+    .login-container {
+        width: 100%;
+        max-width: 400px;
+        padding: 0 20px;
+    }
+
+    .title-text {
+        font-size: 2.8rem;
+        font-weight: 800;
+        color: #8b5cf6;
+        text-align: center;
+        margin-bottom: 30px;
+        text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        animation: titleBounce 1.5s ease-out;
+        opacity: 0;
+        animation-fill-mode: forwards;
+    }
+
+    .login-card {
+        background: rgba(15, 12, 41, 0.85);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(139, 92, 246, 0.2);
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        animation: cardBounce 1.5s ease-out 0.3s;
+        opacity: 0;
+        animation-fill-mode: forwards;
+    }
+
+    @@keyframes titleBounce {
+        0% {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+
+        60% {
+            transform: translateY(10px);
+            opacity: 1;
+        }
+
+        80% {
+            transform: translateY(-5px);
+        }
+
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @@keyframes cardBounce {
+        0% {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        60% {
+            transform: translateY(-10px);
+            opacity: 1;
+        }
+
+        80% {
+            transform: translateY(5px);
+        }
+
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .form-control {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: white;
+        padding: 12px 15px;
+        margin-bottom: 20px;
+    }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 0.25rem rgba(139, 92, 246, 0.25);
+            color: white;
+        }
+
+    .btn-login {
+        background: linear-gradient(45deg, #6d28d9, #8b5cf6);
+        border: none;
+        padding: 12px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        width: 100%;
+        margin-top: 10px;
+        transition: all 0.3s;
+    }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(109, 40, 217, 0.4);
+        }
+
+    .link-purple {
+        color: #a78bfa;
+        transition: all 0.2s;
+        font-size: 0.9rem;
+    }
+
+        .link-purple:hover {
+            color: #8b5cf6;
+            text-decoration: none;
+        }
+</style>
+
+<div class="music-login-bg">
+    <div class="login-container">
+        <h1 class="title-text">MATHEMATICAL RHYTHM</h1>
+
+        <div class="login-card">
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger mb-4">@TempData["Error"]</div>
+            }
+
+            <form asp-controller="Auth" asp-action="Login" method="post" id="loginForm">
+                <div class="form-group">
+                    <label asp-for="Email" class="text-white mb-1">Correo electrónico</label>
+                    <input asp-for="Email" class="form-control" placeholder="tu@email.com" />
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Contrasena" class="text-white mb-1">Contraseña</label>
+                    <input asp-for="Contrasena" type="password" class="form-control" placeholder="••••••••" />
+                    <span asp-validation-for="Contrasena" class="text-danger small"></span>
+                </div>
+
+                <div class="form-group" id="recaptcha-container">
+                    <div id="recaptcha-widget" class="g-recaptcha"></div>
+                </div>
+
+                <button type="submit" class="btn btn-login" id="submit-btn">INICIAR SESIÓN</button>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="/Recuperar/Recuperar" class="link-purple">¿Olvidaste tu contraseña?</a>
+                    <a href="/Auth/Registro" class="link-purple">Registrarse</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        // Configuración de reCAPTCHA
+        var onloadCallback = function() {
+            grecaptcha.render('recaptcha-widget', {
+                'sitekey': '@RecaptchaConfig.Value.SiteKey',
+                'callback': verifyCallback,
+                'expired-callback': expiredCallback,
+                'theme': 'dark'
+            });
+        };
+
+        function verifyCallback(response) {
+            document.getElementById('submit-btn').disabled = false;
+        }
+
+        function expiredCallback() {
+            document.getElementById('submit-btn').disabled = true;
+            grecaptcha.reset();
+        }
+
+        // Cargar reCAPTCHA
+        document.addEventListener('DOMContentLoaded', function() {
+            var script = document.createElement('script');
+            script.src = 'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit';
+            script.async = true;
+            script.defer = true;
+            document.body.appendChild(script);
+        });
+    </script>
+}

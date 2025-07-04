@@ -1,0 +1,126 @@
+﻿@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewData["Title"] = "Recuperar Contraseña | Mathematical Rhythm";
+}
+
+<style>
+    .recovery-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .recovery-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.5s ease-out;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .recovery-title {
+        color: #6d28d9;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .form-label {
+        display: block;
+        color: #4b5563;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        margin-bottom: 1.25rem;
+        transition: border-color 0.2s;
+    }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+    .btn-submit {
+        background: #6d28d9;
+        color: white;
+        width: 100%;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+        .btn-submit:hover {
+            background: #7c3aed;
+        }
+
+    .alert-message {
+        padding: 0.75rem;
+        border-radius: 8px;
+        margin-bottom: 1.25rem;
+        text-align: center;
+    }
+
+    .alert-success {
+        background: #ecfdf5;
+        color: #059669;
+        border: 1px solid #a7f3d0;
+    }
+
+    .link-back {
+        display: block;
+        text-align: center;
+        margin-top: 1.5rem;
+        color: #6d28d9;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        .link-back:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="recovery-container">
+    <div class="recovery-card">
+        <h1 class="recovery-title">RECUPERAR CONTRASEÑA</h1>
+
+        @if (ViewBag.Mensaje != null)
+        {
+            <div class="alert-message alert-success">@ViewBag.Mensaje</div>
+        }
+
+        <form asp-action="Recuperar" method="post">
+            <div class="form-group">
+                <label for="correo" class="form-label">Correo electrónico</label>
+                <input type="email" id="correo" name="correo" class="form-input" placeholder="tu@email.com" required />
+            </div>
+
+            <button type="submit" class="btn-submit">ENVIAR CÓDIGO</button>
+
+            <a href="/Auth/Login" class="link-back">← Volver al inicio de sesión</a>
+        </form>
+    </div>
+</div>

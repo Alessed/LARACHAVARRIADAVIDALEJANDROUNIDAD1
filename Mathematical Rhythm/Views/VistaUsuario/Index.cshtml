@@ -1,0 +1,282 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* Estilos generales */
+    .user-view {
+        padding: 2.5rem 2rem;
+        background-color: #f8f9fa;
+        min-height: calc(100vh - 56px);
+    }
+
+    /* Título principal */
+    .welcome-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 2.5rem;
+        background: linear-gradient(to right, #6d28d9, #c026d3);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid #e9ecef;
+    }
+
+    /* Contenedor de tarjetas */
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.8rem;
+        margin-bottom: 3rem;
+    }
+
+    /* Tarjetas principales */
+    .main-card {
+        padding: 2rem;
+        border-radius: 16px;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .space-card {
+        background: linear-gradient(135deg, #6d28d9 0%, #4c1d95 100%);
+        color: white;
+        border-left: 5px solid #c026d3;
+    }
+
+    .catalog-card {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        color: white;
+        border-left: 5px solid #6d28d9;
+    }
+
+    /* Tarjetas de artistas */
+    .artist-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .artist-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+    .artist-image {
+        height: 180px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .artist-info {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1; /* Hace que este elemento ocupe todo el espacio disponible */
+    }
+
+    /* Textos y títulos */
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1.25rem;
+        position: relative;
+        padding-bottom: 0.75rem;
+    }
+
+        .card-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: currentColor;
+            border-radius: 3px;
+        }
+
+    .card-text {
+        opacity: 0.92;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        font-size: 1.05rem;
+        color:white;
+    }
+
+    .card-text2 {
+        opacity: 0.92;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        font-size: 1.05rem;
+        color: black;
+    }
+
+    .artist-name {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #2d3748;
+    }
+
+    .artist-genre {
+        color: #6d28d9;
+        font-weight: 500;
+        margin-bottom: 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    /* Sección de artistas */
+    .artists-section {
+        margin-top: 3rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 1.8rem;
+        color: #2d3748;
+        position: relative;
+        padding-bottom: 0.5rem;
+    }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background: linear-gradient(to right, #6d28d9, #c026d3);
+            border-radius: 3px;
+        }
+
+    /* Botones */
+    .card-btn {
+        display: block; /* Cambiado de inline-block a block */
+        width: max-content; /* Ancho según el contenido */
+        padding: 0.6rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        margin-top: auto; /* Empuja el botón hacia abajo */
+        margin-left: auto; /* Centrado horizontal */
+        margin-right: auto; /* Centrado horizontal */
+        text-align: center;
+    }
+
+
+    .btn-primary {
+        background: white;
+        color: #6d28d9;
+    }
+
+        .btn-primary:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+        }
+
+    .btn-secondary {
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+        backdrop-filter: blur(5px);
+    }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+    /* Responsive */
+    @@media (max-width: 768px) {
+        .user-view {
+            padding: 1.5rem;
+        }
+
+        .welcome-title {
+            font-size: 2rem;
+        }
+
+        .cards-container {
+            grid-template-columns: 1fr;
+        }
+
+        .main-card {
+            padding: 1.5rem;
+        }
+    }
+</style>
+
+<div class="user-view">
+    <h2 class="welcome-title">Bienvenido a MathematicalRhythm <span class="music-icon">🎧</span></h2>
+
+    <div class="cards-container">
+        <div class="main-card space-card">
+            <h3 class="card-title">Tu espacio musical</h3>
+            <p class="card-text">
+                Administra tu perfil, crea playlists personalizadas y descubre recomendaciones
+                basadas en tus gustos. Todo tu universo musical en un solo lugar.
+            </p>
+            <a href="#" class="card-btn btn-secondary">Explorar</a>
+        </div>
+
+        <div class="main-card catalog-card">
+            <h3 class="card-title">Explora el catálogo</h3>
+            <p class="card-text">
+                Navega por nuestra extensa colección de música electrónica. Encuentra artistas,
+                álbumes y canciones que se adapten a tu estado de ánimo.
+            </p>
+            <a href="#" class="card-btn btn-secondary">Buscar ahora</a>
+        </div>
+    </div>
+
+    <div class="artists-section">
+        <h3 class="section-title">Artistas destacados</h3>
+
+        <div class="cards-container">
+            <!-- Artista 1 -->
+            <div class="artist-card">
+                <div class="artist-image" style="background-image: url('/images/Skrillexx.jpg');"></div>
+                <div class="artist-info">
+                    <h4 class="artist-name">Skrillex</h4>
+                    <p class="artist-genre">Dubstep • Brostep</p>
+                    <p class="card-text2">Sonny John Moore, es un DJ, cantante, remezclador y productor discográfico estadounidense, prominente en sus presentaciones y ha lanzado un nuevo albúm 
+                        F*CK U SKRILLEX YOU THINK UR ANDY WARHOL BUT UR NOT!!</p>
+                    <a href="#" class="card-btn btn-primary">Ver discografía</a>
+                </div>
+            </div>
+
+            <!-- Artista 2 -->
+            <div class="artist-card">
+                <div class="artist-image" style="background-image: url('/images/james-hype.jpg');"></div>
+                <div class="artist-info">
+                    <h4 class="artist-name">James Hype</h4>
+                    <p class="artist-genre">Tech House • Electro House</p>
+                    <p class="card-text2">James Edward Lee Marsland, es un DJ y productor discográfico inglés quién ha destaca por shu habilidad al mezclar y ser referente del WHO. DOES. THIS?.
+                        También lanzado su último sencillo Don't Wake Me Up</p>
+                    <a href="#" class="card-btn btn-primary">Ver discografía</a>
+                </div>
+            </div>
+
+            <!-- Artista 3 -->
+            <div class="artist-card">
+                <div class="artist-image" style="background-image: url('/images/Matroda.jpg');"></div>
+                <div class="artist-info">
+                    <h4 class="artist-name">Matroda</h4>
+                    <p class="artist-genre">House • Melodic Techno</p>
+                    <p class="card-text2">Matroda es el epítome de la fugaz existencia de la música electrónica. Acogiendo la música house a su manera, con el acertado nombre de 
+                        «matrodasound» acuñado por sus verdaderos fans</p>
+                    <a href="#" class="card-btn btn-primary">Ver discografía</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
